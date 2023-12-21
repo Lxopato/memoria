@@ -39,30 +39,30 @@ ORDER BY
 -- Topological Sort
 WITH RECURSIVE TopologicalOrder AS (
   SELECT
-    source,
-    target,
+    source_vertex,
+    target_vertex,
     1 AS level
   FROM
     edges
   WHERE
-    source NOT IN (SELECT target FROM edges)
+    source_vertex NOT IN (SELECT target_vertex FROM edges)
   UNION ALL
   SELECT
-    e.source,
-    e.target,
+    e.source_vertex,
+    e.target_vertex,
     t.level + 1
   FROM
     edges e
   JOIN
-    TopologicalOrder t ON e.source = t.target
+    TopologicalOrder t ON e.source_vertex = t.target_vertex
 )
 SELECT
-  source,
+  source_vertex,
   MAX(level) AS topological_order
 FROM
   TopologicalOrder
 GROUP BY
-  source
+  source_vertex
 ORDER BY
   topological_order DESC;
 
@@ -109,7 +109,7 @@ WITH RECURSIVE MaxMatchingCTE AS (
     JOIN MaxMatchingCTE p ON e.source_vertex = p.target_vertex
   WHERE
     p.level % 2 = 1 -- Select only unmatched vertices
-)
+);
 -- Select the maximum matching
 SELECT
   source_vertex,

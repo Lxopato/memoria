@@ -21,7 +21,7 @@ def create_graph(request):
         cursor.execute("DROP TABLE IF EXISTS edges;")
         cursor.execute("CREATE TABLE edges(source_vertex INTEGER, target_vertex INTEGER, weight INTEGER);")
         query = f"INSERT INTO edges(source_vertex, target_vertex, weight) VALUES %s"
-        with open(os.path.join(settings.BASE_DIR, "data/connected_components.e")) as graph_file:
+        with open(os.path.join(settings.BASE_DIR, "data/planarity_testing.e")) as graph_file:
             reader = csv.reader(graph_file, delimiter=" ")
             rows = []
             for row in reader:
@@ -42,7 +42,6 @@ def create_graph(request):
         return Response(result)
     
     if request.method == "POST":
-        print("aaaaaaaaaaa")
         vertices = int(request.data.get("input"))
         cursor = connection.cursor()
         cursor.execute("DROP TABLE IF EXISTS edges;")

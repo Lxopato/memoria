@@ -18,7 +18,7 @@ const Button = () => {
 
   return (
     <div className="text-center">
-      <button onClick={handleClick}>Generate Graph predefined</button>
+      <button onClick={handleClick}>Generate predefined graph</button>
       <p>{response.length > 1 ? <div style={{ height: '500px', overflow: 'auto'}}>
         <table style={{ width: '80%', tableLayout: 'fixed', border: 'solid', marginLeft: 'auto', marginRight: 'auto'}}>
           <thead style={{border: 'solid'}}>
@@ -31,7 +31,7 @@ const Button = () => {
             {response.map(([column1, column2], index) => (
               <tr key={index} style={{border: 'solid'}}>
                 <td style={{border: 'solid'}}>{column1}</td>
-                <td style={{border: 'solid'}}>{column2}</td>
+                <td style={{border: 'solid'}}>{column2}</td> 
               </tr>
             ))}
           </tbody>
