@@ -6,7 +6,7 @@ import { API_URL } from '../constants';
 const NumberInputComponent = () => {
   const [response, setResponse] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  //setResponse([])
+
   const handleClick = async () => {
     try {
       const result = await axios.post((API_URL + "create_graph"), {input: inputValue}); // Pass the input value as a query parameter

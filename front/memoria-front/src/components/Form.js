@@ -24,7 +24,7 @@ const MyForm = ({
         <br />
         {"f(T, T_i, T_o, ALL, A_0, A_r, A_{Agg})"}
         <br />
-        <div  style={{ display: 'flex', flexDirection: 'row', alignItems:'center' }}>
+        <div  style={{ display: 'flex', flexDirection: 'row', textAlign:'center', paddingLeft: '10%' }}>
         <label>
             f:
             <input type="text" value={f} onChange={(e) => setf(e.target.value)} />
